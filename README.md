@@ -1,4 +1,7 @@
-# fluent-maui
+# FluentMAUI
+
+![FluentMAUI](https://raw.githubusercontent.com/lk-code/fluent-maui/main/resources/project-logo-128px.png)
+
 a lot of useful components for .NET MAUI projects
 
 Fluent MAUI consists of several nuget libraries. Each library contains components for a specific purpose.
