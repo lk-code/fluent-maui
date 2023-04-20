@@ -1,9 +1,6 @@
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using System.Text.Json;
-using Microsoft.Extensions.Configuration.Memory;
-using Microsoft.Extensions.Configuration.Json;
 
 namespace FluentMAUI.Configuration;
 
