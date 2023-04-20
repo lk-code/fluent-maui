@@ -57,17 +57,9 @@
 
     <ItemGroup>
         <EmbeddedResource Include="appsettings.json" />
-        <EmbeddedResource Include="appsettings.android.json">
-            <DependentUpon>appsettings.json</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="appsettings.ios.json">
-            <DependentUpon>appsettings.json</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="appsettings.maccatalyst.json">
-            <DependentUpon>appsettings.json</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="appsettings.winui.json">
-            <DependentUpon>appsettings.json</DependentUpon>
-        </EmbeddedResource>
+        <EmbeddedResource Include="appsettings.android.json" />
+        <EmbeddedResource Include="appsettings.ios.json" />
+        <EmbeddedResource Include="appsettings.maccatalyst.json" />
+        <EmbeddedResource Include="appsettings.winui.json" />
     </ItemGroup>
 </Project>

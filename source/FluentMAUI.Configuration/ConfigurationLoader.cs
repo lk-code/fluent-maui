@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json;
+using Microsoft.Extensions.Configuration.Memory;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace FluentMAUI.Configuration;
 
@@ -11,12 +14,15 @@ public static class ConfigurationLoader
     /// </summary>
     /// <param name="configurationManager">the .NET IConfigurationBuilder</param>
     /// <returns></returns>
-    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationManager)
+    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder)
     {
-        IConfigurationBuilder configBuilder = new ConfigurationBuilder();
-        Assembly assembly = Assembly.GetExecutingAssembly();
-        string? assemblyName = assembly.GetName().Name;
+        Assembly? assembly = Assembly.GetEntryAssembly();
+        if (assembly is null)
+        {
+            throw new ArgumentNullException(nameof(assembly), "Assembly is null");
+        }
 
+        string? assemblyName = assembly.GetName().Name;
         if (assemblyName is null)
         {
             throw new ArgumentNullException(nameof(assemblyName), "Assembly Name is null");
@@ -24,9 +30,10 @@ public static class ConfigurationLoader
 
         string platform = DeviceInfo.Current.Platform.ToString().ToLowerInvariant();
         string environment = "Debug";
-        #if RELEASE
-        environment = "Release";
-        #endif
+#if RELEASE
+    environment = "Release";
+#endif
+
         IEnumerable<string> appsettingFileNames = new List<string>
         {
             "appsettings.json",                                 // appsettings.json
@@ -38,26 +45,32 @@ public static class ConfigurationLoader
         foreach (string appsettingFileName in appsettingFileNames)
         {
             string appsettingsFullFileName = $"{assemblyName}.{appsettingFileName}";
+
+#if DEBUG
             Debug.Write($"try to load appsettings from: {appsettingsFullFileName} ... ");
-            
+#endif
+
             using Stream? appsettingsStream = assembly.GetManifestResourceStream(appsettingsFullFileName);
+
             if (appsettingsStream is not null)
             {
-                configBuilder = configBuilder.AddJsonStream(appsettingsStream);
+                configurationBuilder.AddJsonStream(appsettingsStream);
+
+#if DEBUG
                 Debug.WriteLine("FOUND");
+#endif
             }
             else
             {
+#if DEBUG
                 Debug.WriteLine("NOT FOUND");
+#endif
             }
         }
 
-        // build config
-        IConfigurationRoot config = configBuilder.Build();
-        configurationManager = configurationManager.AddConfiguration(config);
-
-        return configurationManager;
+        return configurationBuilder;
     }
+
 
     /// <summary>
     /// add fluent configuration to maui instance

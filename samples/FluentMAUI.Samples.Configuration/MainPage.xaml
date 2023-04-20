@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FluentMAUI.Samples.Configuration.MainPage">
+             xmlns:local="clr-namespace:FluentMAUI.Samples.Configuration"
+             x:Class="FluentMAUI.Samples.Configuration.MainPage"
+             x:DataType="local:MainViewModel">
 
     <ScrollView>
         <VerticalStackLayout
@@ -26,13 +28,6 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

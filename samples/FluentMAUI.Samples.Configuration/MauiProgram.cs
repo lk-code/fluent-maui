@@ -22,6 +22,10 @@ public static class MauiProgram
         // or on the .NET ConfigurationManager
         // => builder.Configuration.UseFluentConfiguration();
 
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainViewModel>();
+
         return builder.Build();
     }
 }
