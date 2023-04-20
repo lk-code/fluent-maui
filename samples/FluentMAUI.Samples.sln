@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{BF3F1DDD-F917-4542-AB9C-C141DE8386E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{B94BA279-A892-4E10-9569-75AFAE7F7D54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Configuration", "..\source\FluentMAUI.Configuration\FluentMAUI.Configuration.csproj", "{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Samples.Configuration", "FluentMAUI.Samples.Configuration\FluentMAUI.Samples.Configuration.csproj", "{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2} = {B94BA279-A892-4E10-9569-75AFAE7F7D54}
+		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5} = {BF3F1DDD-F917-4542-AB9C-C141DE8386E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D96D617A-B672-4BD7-ACB0-E04E67192A10}
+	EndGlobalSection
+EndGlobal

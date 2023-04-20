@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.Configuration", "FluentMAUI.Configuration\FluentMAUI.Configuration.csproj", "{BDC1C0DF-6A0B-4BAA-B2ED-F56CAF20743B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC1C0DF-6A0B-4BAA-B2ED-F56CAF20743B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC1C0DF-6A0B-4BAA-B2ED-F56CAF20743B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC1C0DF-6A0B-4BAA-B2ED-F56CAF20743B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC1C0DF-6A0B-4BAA-B2ED-F56CAF20743B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
