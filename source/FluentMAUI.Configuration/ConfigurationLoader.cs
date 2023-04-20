@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace FluentMAUI.Configuration;
 
@@ -14,6 +14,10 @@ public static class ConfigurationLoader
     public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder)
     {
         Assembly? assembly = Assembly.GetEntryAssembly();
+#if ANDROID
+        // TODO: get resource namespace for android
+#endif
+
         if (assembly is null)
         {
             throw new ArgumentNullException(nameof(assembly), "Assembly is null");
