@@ -37,10 +37,10 @@ public static class ConfigurationLoader
 
         IEnumerable<string> appsettingFileNames = new List<string>
         {
-            "appsettings.json",                                 // appsettings.json
-            $"appsettings.{platform}.json",                     // appsettings.winui.json
-            $"appsettings.{environment}.json",                  // appsettings.Debug.json
-            $"appsettings.{platform}.{environment}.json"        // appsettings.winui.Debug.json
+            "appsettings.json",                                             // appsettings.json
+            "appsettings." + platform + ".json",                            // appsettings.winui.json
+            "appsettings." + environment + ".json",                         // appsettings.Debug.json
+            "appsettings." + platform + "." + environment + ".json"         // appsettings.winui.Debug.json
         };
 
         foreach (string appsettingFileName in appsettingFileNames)
