@@ -1,9 +1,13 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+
 namespace FluentMAUI.Samples.Configuration;
 
 public class MainViewModel : ObservableObject
 {
-	public MainViewModel()
+    [ObservableProperty] string titleMessage = string.Empty;
+
+    public MainViewModel()
 	{
 	}
 }
