@@ -9,15 +9,17 @@ public static class ConfigurationLoader
     /// <summary>
     /// add fluent configuration to .NET IConfigurationBuilder
     /// </summary>
-    /// <param name="configurationManager">the .NET IConfigurationBuilder</param>
+    /// <param name="configurationBuilder">the .NET IConfigurationBuilder</param>
+    /// <param name="assembly">The assembly in which the appsettings are located as resources</param>
     /// <returns></returns>
-    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder)
+    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder, Assembly? assembly = null)
     {
-        Assembly? assembly = Assembly.GetEntryAssembly();
-#if ANDROID
-        // TODO: get resource namespace for android
-#endif
+        if(assembly is null)
+        {
+            assembly = Assembly.GetEntryAssembly();
+        }
 
+        // can still be zero on Android.
         if (assembly is null)
         {
             throw new ArgumentNullException(nameof(assembly), "Assembly is null");
@@ -77,8 +79,9 @@ public static class ConfigurationLoader
     /// add fluent configuration to maui instance
     /// </summary>
     /// <param name="builder">the net maui builder</param>
+    /// <param name="assembly">The assembly in which the appsettings are located as resources</param>
     /// <returns></returns>
-    public static MauiAppBuilder UseFluentConfiguration(this MauiAppBuilder builder)
+    public static MauiAppBuilder UseFluentConfiguration(this MauiAppBuilder builder, Assembly? assembly = null)
     {
         builder.Configuration.UseFluentConfiguration();
 
