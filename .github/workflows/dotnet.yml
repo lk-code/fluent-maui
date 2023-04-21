@@ -18,13 +18,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-        
-    - name: Install MAUI Workloads
-      run: |
-        dotnet workload install maui --ignore-failed-sources
-        
-    - name: Restore dependencies
-      run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
 
     - name: Version Visual Studio SDK projects
       uses: roryprimrose/set-vs-sdk-project-version@v1.0.6
@@ -32,13 +25,20 @@ jobs:
         # The wildcard filter that identifies projects to version
         projectFilter: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
         # Maps to the Version element
-        version: $env:Version
+        version: "$env:Version"
         # Maps to the AssemblyVersion element
-        assemblyVersion: $env:Version
+        assemblyVersion: "$env:Version"
         # Maps to the FileVersion element
-        fileVersion: $env:Version
+        fileVersion: "$env:Version"
         # Maps to the InformationalVersion element
-        informationalVersion: $env:Version
+        informationalVersion: "$env:Version"
+        
+    - name: Install MAUI Workloads
+      run: |
+        dotnet workload install maui --ignore-failed-sources
+        
+    - name: Restore dependencies
+      run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
       
     - name: Build
       run: dotnet build source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --configuration Release --no-restore
