@@ -25,13 +25,13 @@ jobs:
         # The wildcard filter that identifies projects to version
         projectFilter: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
         # Maps to the Version element
-        version: "$env:Version"
+        version: ${{ env.Version }}
         # Maps to the AssemblyVersion element
-        assemblyVersion: "$env:Version"
+        assemblyVersion: ${{ env.Version }}
         # Maps to the FileVersion element
-        fileVersion: "$env:Version"
+        fileVersion: ${{ env.Version }}
         # Maps to the InformationalVersion element
-        informationalVersion: "$env:Version"
+        informationalVersion: ${{ env.Version }}
         
     - name: Install MAUI Workloads
       run: |
