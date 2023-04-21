@@ -21,7 +21,7 @@ jobs:
         dotnet workload install maui --ignore-failed-sources
         
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
       
     - name: Build
       run: dotnet build --no-restore
