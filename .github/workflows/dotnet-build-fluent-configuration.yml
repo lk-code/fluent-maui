@@ -8,7 +8,10 @@ jobs:
     runs-on: windows-2022
 
     env:
+      Configuration: Release
       Version: 1.0.${{ github.run_number }}
+      Project: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
+      NugetPackage: source/**/*.nupkg
 
     steps:
     - name: Checkout
@@ -38,13 +41,13 @@ jobs:
         dotnet workload install maui --ignore-failed-sources
         
     - name: Restore dependencies
-      run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
+      run: dotnet restore ${{ env.Project }}
       
     - name: Build
-      run: dotnet build source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --configuration Release --no-restore
+      run: dotnet build ${{ env.Project }} --configuration ${{ env.Configuration }} --no-restore
 
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
         name: nuget packages
-        path: source/**/*.nupkg
+        path: ${{ env.NugetPackage }}
