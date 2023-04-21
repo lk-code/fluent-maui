@@ -32,13 +32,13 @@ jobs:
         # The wildcard filter that identifies projects to version
         projectFilter: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
         # Maps to the Version element
-        version: $VERSION
+        version: ${{ VERSION }}
         # Maps to the AssemblyVersion element
-        assemblyVersion: $VERSION
+        assemblyVersion: ${{ VERSION }}
         # Maps to the FileVersion element
-        fileVersion: $VERSION
+        fileVersion: ${{ VERSION }}
         # Maps to the InformationalVersion element
-        informationalVersion: $VERSION
+        informationalVersion: ${{ VERSION }}
       
     - name: Build
       run: dotnet build source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --configuration Release --no-restore
