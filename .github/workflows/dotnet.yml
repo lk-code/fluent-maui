@@ -27,7 +27,7 @@ jobs:
       uses: roryprimrose/set-vs-sdk-project-version@v1.0.3
       with:
         # The wildcard filter that identifies projects to version
-        projectFilter: "**/HtmlCompiler.csproj"
+        projectFilter: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
         # Maps to the Version element
         version: 1.0.${{ github.run_number }}
         # Maps to the AssemblyVersion element
