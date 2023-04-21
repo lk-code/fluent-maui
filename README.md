@@ -22,3 +22,12 @@ The filename pattern is as follows: **appsettings.{platform}.{environment}.json*
 **environments:**
 * Debug
 * Release
+
+### configure
+`builder.UseFluentConfiguration(options =>`  
+`{`  
+`// LoadAppsettingsFrom-Assembly is optional for ios, macos, winui BUT REQUIRED on android`  
+`options.LoadAppsettingsFrom = Assembly.GetExecutingAssembly();`  
+`});`
+
+* **LoadAppsettingsFrom:** Define the assembly where the appsettings are located as resource files (EmbeddedResource).
