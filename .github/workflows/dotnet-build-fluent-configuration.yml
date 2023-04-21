@@ -1,4 +1,4 @@
-name: FluentMAUI.Configuration .NET MAUI Build 
+name: FluentMAUI.Configuration Build 
 
 on: workflow_dispatch
   
