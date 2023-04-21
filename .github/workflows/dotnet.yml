@@ -23,5 +23,19 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
       
+    - name: Version Visual Studio SDK projects
+      uses: roryprimrose/set-vs-sdk-project-version@v1.0.3
+      with:
+        # The wildcard filter that identifies projects to version
+        projectFilter: "**/HtmlCompiler.csproj"
+        # Maps to the Version element
+        version: 1.0.${{ github.run_number }}
+        # Maps to the AssemblyVersion element
+        assemblyVersion: 1.0.${{ github.run_number }}
+        # Maps to the FileVersion element
+        fileVersion: 1.0.${{ github.run_number }}
+        # Maps to the InformationalVersion element
+        informationalVersion: 1.0.${{ github.run_number }}
+      
     - name: Build
       run: dotnet build  source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --no-restore
