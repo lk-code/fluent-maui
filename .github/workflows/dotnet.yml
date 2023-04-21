@@ -24,4 +24,4 @@ jobs:
       run: dotnet restore source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build  source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --no-restore
