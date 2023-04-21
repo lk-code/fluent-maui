@@ -38,11 +38,10 @@ jobs:
         informationalVersion: 1.0.${{ github.run_number }}
       
     - name: Build
-      run: dotnet build  source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --no-restore
+      run: dotnet build source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj --configuration Release --no-restore
       
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
         name: nuget packages
-        path: |
-          *.nupkg
+        path: source/*/*.nupkg
