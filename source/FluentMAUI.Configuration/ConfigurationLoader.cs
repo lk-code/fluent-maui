@@ -83,7 +83,7 @@ public static class ConfigurationLoader
     /// <returns></returns>
     public static MauiAppBuilder UseFluentConfiguration(this MauiAppBuilder builder, Assembly? assembly = null)
     {
-        builder.Configuration.UseFluentConfiguration();
+        builder.Configuration.UseFluentConfiguration(assembly);
 
         return builder;
     }

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using System.Reflection;
+using CommunityToolkit.Maui;
 using FluentMAUI.Configuration;
 
 namespace FluentMAUI.Samples.Configuration;
@@ -17,12 +18,18 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.UseFluentConfiguration();
+
+
+        builder.UseFluentConfiguration(Assembly.GetExecutingAssembly());
 
         // you can use it direct on maui builder like:
-        // => builder.UseFluentConfiguration();
+        // => builder.UseFluentConfiguration(Assembly.GetExecutingAssembly());
         // or on the .NET ConfigurationManager
-        // => builder.Configuration.UseFluentConfiguration();
+        // => builder.Configuration.UseFluentConfiguration(Assembly.GetExecutingAssembly());
+        //
+        // NOTE: Assembly is optional for ios, macos and winui
+        // but required for android!
+
 
 
         builder.Services.AddSingleton<MainPage>();
