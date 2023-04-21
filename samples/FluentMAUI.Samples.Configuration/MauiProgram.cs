@@ -20,7 +20,10 @@ public static class MauiProgram
 
 
 
-        builder.UseFluentConfiguration(Assembly.GetExecutingAssembly());
+        builder.UseFluentConfiguration(options =>
+        {
+            options.LoadAppsettingsFrom = Assembly.GetExecutingAssembly();
+        });
 
         // you can use it direct on maui builder like:
         // => builder.UseFluentConfiguration(Assembly.GetExecutingAssembly());

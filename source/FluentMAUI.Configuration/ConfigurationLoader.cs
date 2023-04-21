@@ -12,20 +12,23 @@ public static class ConfigurationLoader
     /// <param name="configurationBuilder">the .NET IConfigurationBuilder</param>
     /// <param name="assembly">The assembly in which the appsettings are located as resources</param>
     /// <returns></returns>
-    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder, Assembly? assembly = null)
+    public static IConfigurationBuilder UseFluentConfiguration(this IConfigurationBuilder configurationBuilder, Action<Options>? configureDelegate = default)
     {
-        if(assembly is null)
+        Options options = new Options();
+        configureDelegate?.Invoke(options);
+        
+        if(options.LoadAppsettingsFrom is null)
         {
-            assembly = Assembly.GetEntryAssembly();
+            options.LoadAppsettingsFrom = Assembly.GetEntryAssembly();
         }
 
         // can still be zero on Android.
-        if (assembly is null)
+        if (options.LoadAppsettingsFrom is null)
         {
-            throw new ArgumentNullException(nameof(assembly), "Assembly is null");
+            throw new ArgumentNullException(nameof(options.LoadAppsettingsFrom), "LoadAppsettingsFrom Assembly is null");
         }
 
-        string? assemblyName = assembly.GetName().Name;
+        string? assemblyName = options.LoadAppsettingsFrom.GetName().Name;
         if (assemblyName is null)
         {
             throw new ArgumentNullException(nameof(assemblyName), "Assembly Name is null");
@@ -53,7 +56,7 @@ public static class ConfigurationLoader
             Debug.Write($"try to load appsettings from: {appsettingsFullFileName} ... ");
 #endif
 
-            using Stream? appsettingsStream = assembly.GetManifestResourceStream(appsettingsFullFileName);
+            using Stream? appsettingsStream = options.LoadAppsettingsFrom.GetManifestResourceStream(appsettingsFullFileName);
 
             if (appsettingsStream is not null)
             {
@@ -81,9 +84,9 @@ public static class ConfigurationLoader
     /// <param name="builder">the net maui builder</param>
     /// <param name="assembly">The assembly in which the appsettings are located as resources</param>
     /// <returns></returns>
-    public static MauiAppBuilder UseFluentConfiguration(this MauiAppBuilder builder, Assembly? assembly = null)
+    public static MauiAppBuilder UseFluentConfiguration(this MauiAppBuilder builder, Action<Options>? options = default)
     {
-        builder.Configuration.UseFluentConfiguration(assembly);
+        builder.Configuration.UseFluentConfiguration(options);
 
         return builder;
     }
