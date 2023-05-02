@@ -8,10 +8,11 @@ namespace FluentMAUI.Samples.Configuration;
 public partial class MainViewModel : ObservableObject
 {
     private readonly IConfiguration _configuration;
+
     [ObservableProperty] string titleMessage = string.Empty;
 
     public MainViewModel(IConfiguration configuration)
-	{
+    {
         this._configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
 
