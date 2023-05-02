@@ -11,6 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Configuration", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Samples.Configuration", "FluentMAUI.Samples.Configuration\FluentMAUI.Samples.Configuration.csproj", "{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.Samples.UI", "FluentMAUI.Samples.UI\FluentMAUI.Samples.UI.csproj", "{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.UI", "..\source\FluentMAUI.UI\FluentMAUI.UI.csproj", "{043FD88A-C04D-434F-A8AF-71DEABE230F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{A182DFCE-1B7A-4691-840F-7F2BA77B6D51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{2001D5B7-2649-489C-BD5C-B46E56C9D336}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnet-build-fluent-configuration.yml = ..\.github\workflows\dotnet-build-fluent-configuration.yml
+		..\.github\workflows\dotnet-build-fluent-ui.yml = ..\.github\workflows\dotnet-build-fluent-ui.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +38,14 @@ Global
 		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{043FD88A-C04D-434F-A8AF-71DEABE230F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{043FD88A-C04D-434F-A8AF-71DEABE230F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{043FD88A-C04D-434F-A8AF-71DEABE230F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{043FD88A-C04D-434F-A8AF-71DEABE230F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,6 +53,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1BB94722-85B3-4C98-B175-3BF1ADF1ACB2} = {B94BA279-A892-4E10-9569-75AFAE7F7D54}
 		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5} = {BF3F1DDD-F917-4542-AB9C-C141DE8386E8}
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89} = {BF3F1DDD-F917-4542-AB9C-C141DE8386E8}
+		{043FD88A-C04D-434F-A8AF-71DEABE230F4} = {B94BA279-A892-4E10-9569-75AFAE7F7D54}
+		{2001D5B7-2649-489C-BD5C-B46E56C9D336} = {A182DFCE-1B7A-4691-840F-7F2BA77B6D51}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D96D617A-B672-4BD7-ACB0-E04E67192A10}

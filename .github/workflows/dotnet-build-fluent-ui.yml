@@ -1,0 +1,53 @@
+name: FluentMAUI.UI Build 
+
+on: workflow_dispatch
+  
+jobs:
+  build:
+
+    runs-on: windows-2022
+
+    env:
+      Configuration: Release
+      Version: 1.0.${{ github.run_number }}
+      Project: source/FluentMAUI.UI/FluentMAUI.UI.csproj
+      NugetPackage: source/**/*.nupkg
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Version Visual Studio SDK projects
+      uses: roryprimrose/set-vs-sdk-project-version@v1.0.6
+      with:
+        # The wildcard filter that identifies projects to version
+        projectFilter: source/FluentMAUI.UI/FluentMAUI.UI.csproj
+        # Maps to the Version element
+        version: ${{ env.Version }}
+        # Maps to the AssemblyVersion element
+        assemblyVersion: ${{ env.Version }}
+        # Maps to the FileVersion element
+        fileVersion: ${{ env.Version }}
+        # Maps to the InformationalVersion element
+        informationalVersion: ${{ env.Version }}
+        
+    - name: Install MAUI Workloads
+      run: |
+        dotnet workload install maui --ignore-failed-sources
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.Project }}
+      
+    - name: Build
+      run: dotnet build ${{ env.Project }} --configuration ${{ env.Configuration }} --no-restore
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: nuget packages
+        path: ${{ env.NugetPackage }}
