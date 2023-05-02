@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace FluentMAUI.Samples.UI.Controls;
 
 public partial class BasicInput : ContentPage
 {
-    public BasicInput()
+    private readonly BasicInputVM _viewModel;
+    
+    public BasicInput(BasicInputVM viewModel)
     {
         InitializeComponent();
+
+        BindingContext = _viewModel = viewModel;
     }
 }

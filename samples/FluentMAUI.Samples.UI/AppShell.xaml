@@ -8,14 +8,13 @@
 
     <FlyoutItem Title="Overview">
         <Tab>
-            <ShellContent Title="Overview 1"
-                          ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </FlyoutItem>
+    
     <FlyoutItem Title="Basic Input">
         <Tab>
-            <ShellContent Title="Basic Input 1"
-                          ContentTemplate="{DataTemplate controls:BasicInput}" />
+            <ShellContent ContentTemplate="{DataTemplate controls:BasicInput}" />
         </Tab>
     </FlyoutItem>
 
