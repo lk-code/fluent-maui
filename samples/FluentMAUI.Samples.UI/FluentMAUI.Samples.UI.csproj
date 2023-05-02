@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
@@ -15,7 +15,7 @@
 		<ApplicationTitle>FluentMAUI.Samples.UI</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.fluentmaui.samples.ui</ApplicationId>
+		<ApplicationId>dev.lk-code.fluentmaui.samples.ui</ApplicationId>
 		<ApplicationIdGuid>074d6411-eca1-4892-9423-9fb3fe38cfb5</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -52,14 +52,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\source\FluentMAUI.UI\FluentMAUI.UI.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 </Project>
