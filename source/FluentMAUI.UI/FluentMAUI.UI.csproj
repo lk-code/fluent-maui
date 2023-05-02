@@ -16,9 +16,39 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<Nullable>enable</Nullable>
+		<Title>$(AssemblyName)</Title>
+		<Company>lk-code</Company>
+		<Description>A lot of additional useful UI controls for your .NET MAUI app.</Description>
+		<Copyright>lk-code</Copyright>
+		<PackageProjectUrl>https://github.com/lk-code/fluent-maui</PackageProjectUrl>
+		<PackageIcon>project-logo-128px.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/lk-code/fluent-maui</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>/</PackagePath>
+	    <Link>LICENSE</Link>
+	  </None>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>/</PackagePath>
+	    <Link>README.md</Link>
+	  </None>
+	  <None Include="..\..\resources\project-logo-128px.png">
+	    <Pack>True</Pack>
+	    <PackagePath>/</PackagePath>
+	    <Link>project-logo-128px.png</Link>
+	  </None>
+	</ItemGroup>
 </Project>
