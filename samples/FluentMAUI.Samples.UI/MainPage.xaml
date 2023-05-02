@@ -4,6 +4,7 @@
              x:Class="FluentMAUI.Samples.UI.MainPage">
 
     <ScrollView>
+
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
@@ -36,6 +37,7 @@
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>

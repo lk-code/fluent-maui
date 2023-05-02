@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FluentMAUI.UI;
+using Microsoft.Extensions.Logging;
 
 namespace FluentMAUI.Samples.UI;
 
@@ -15,6 +16,15 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+
+
+		builder.UseFluentUi(options =>
+		{
+			
+		});
+		
+		
+		
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
