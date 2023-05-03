@@ -1,3 +1,4 @@
+using FluentMAUI.UI.EventArgs;
 using FluentMAUI.UI.Interfaces;
 
 namespace FluentMAUI.UI.Controls;
@@ -21,7 +22,7 @@ public class ToggleButton : Button, IToggleButton
         }
     }
 
-    public event EventHandler<bool> Checked = (e, a) => { };
+    public event EventHandler<CheckedEventArgs> Checked = (e, a) => { };
 
     public static readonly BindableProperty SelectedBackgroundColorProperty = BindableProperty.Create(
         "SelectedBackgroundColor",
@@ -57,11 +58,11 @@ public class ToggleButton : Button, IToggleButton
         this.Clicked -= ToggleButton_Clicked;
     }
 
-    private void ToggleButton_Clicked(object sender, EventArgs e)
+    private void ToggleButton_Clicked(object sender, System.EventArgs e)
     {
         this.IsChecked = !this.IsChecked;
-
-        this.Checked?.Invoke(this, this.IsChecked);
+        
+        this.Checked?.Invoke(this, new CheckedEventArgs(this.IsChecked));
 
         if (this.IsChecked)
         {

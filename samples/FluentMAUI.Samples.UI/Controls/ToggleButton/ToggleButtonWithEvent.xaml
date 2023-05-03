@@ -26,7 +26,7 @@
                                    CornerRadius="4"
                                    Padding="0,8"
                                    x:Name="ToggleButton"
-                                   Checked="ToggleButton_OnChecked" />
+                                   Checked="ToggleButton_OnChecked"/>
             
         </VerticalStackLayout>
         
