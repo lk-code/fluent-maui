@@ -19,6 +19,18 @@ public partial class BasicInputVM : ObservableObject
     {
         this.Pages.Clear();
 
-        this.Pages.Add(new("Toggle Button with Event", typeof(ToggleButton.ToggleButtonWithEvent)));
+        this.Pages.Add(new("Toggle Button with Event", "controls/togglebutton-with-event"));
+    }
+
+    [RelayCommand]
+    public async Task OnNavigationSelectedAsync(List<object> selected, CancellationToken cancellationToken)
+    {
+        PageItem? page = (PageItem?)selected.FirstOrDefault();
+        if (page is null)
+        {
+            return;
+        }
+        
+        await Shell.Current.GoToAsync(page.Route, true);
     }
 }

@@ -3,12 +3,12 @@
 public class PageItem
 {
     public string Title { get; set; }
-    public Type Page { get; set; }
+    public string Route { get; set; }
 
     public PageItem(string title,
-        Type page)
+        string route)
     {
         Title = title;
-        Page = page;
+        Route = route;
     }
 }

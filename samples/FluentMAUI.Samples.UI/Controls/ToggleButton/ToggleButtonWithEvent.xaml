@@ -2,9 +2,33 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FluentMAUI.Samples.UI.Controls.ToggleButton.ToggleButtonWithEvent">
+             xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls.ToggleButton"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"
+             x:Class="FluentMAUI.Samples.UI.Controls.ToggleButton.ToggleButtonWithEvent"
+             x:DataType="local:ToggleButtonWithEventVM">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding ViewAppearingCommand}" />
+    </ContentPage.Behaviors>
     
     <ContentPage.Content>
+        
+        <VerticalStackLayout Padding="8">
+            
+            <Label x:Name="ToggleButtonLabel"
+                   Text="-" />
+            <controls:ToggleButton Text="ToggleButton with Event"
+                                   BackgroundColor="#cfcfcf"
+                                   TextColor="#020202"
+                                   SelectedBackgroundColor="#0044ff"
+                                   CornerRadius="4"
+                                   Padding="0,8"
+                                   x:Name="ToggleButton"
+                                   Checked="ToggleButton_OnChecked" />
+            
+        </VerticalStackLayout>
         
     </ContentPage.Content>
     

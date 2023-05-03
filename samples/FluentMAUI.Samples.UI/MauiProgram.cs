@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using FluentMAUI.UI;
+using FluentMAUI.UI.Controls;
 
 namespace FluentMAUI.Samples.UI;
 
@@ -28,9 +29,13 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainViewModel>();
+        
         builder.Services.AddSingleton<Controls.BasicInput>();
         builder.Services.AddSingleton<Controls.BasicInputVM>();
-
+        
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEvent>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEventVM>();
+        
         return builder.Build();
     }
 }
