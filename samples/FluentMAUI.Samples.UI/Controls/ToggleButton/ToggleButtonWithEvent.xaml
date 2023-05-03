@@ -20,11 +20,6 @@
             <Label x:Name="ToggleButtonLabel"
                    Text="-" />
             <controls:ToggleButton Text="ToggleButton with Event"
-                                   BackgroundColor="#cfcfcf"
-                                   TextColor="#020202"
-                                   SelectedBackgroundColor="#0044ff"
-                                   CornerRadius="4"
-                                   Padding="0,8"
                                    x:Name="ToggleButton"
                                    Checked="ToggleButton_OnChecked"/>
             

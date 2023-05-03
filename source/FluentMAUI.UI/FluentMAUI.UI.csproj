@@ -57,4 +57,9 @@
 	<ItemGroup>
 	  <Folder Include="Handler\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="Styles\FluentStyles.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	</ItemGroup>
 </Project>
