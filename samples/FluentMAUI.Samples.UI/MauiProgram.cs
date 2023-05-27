@@ -35,6 +35,8 @@ public static class MauiProgram
         
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEvent>();
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEventVM>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommand>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommandVM>();
         
         return builder.Build();
     }

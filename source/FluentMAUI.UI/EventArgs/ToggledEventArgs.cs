@@ -1,10 +1,10 @@
 namespace FluentMAUI.UI.EventArgs;
 
-public class CheckedEventArgs : System.EventArgs
+public class ToggledEventArgs : System.EventArgs
 {
     public bool IsChecked { get; set; } = false;
 
-    public CheckedEventArgs(bool isChecked)
+    public ToggledEventArgs(bool isChecked)
     {
         IsChecked = isChecked;
     }

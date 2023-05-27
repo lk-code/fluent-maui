@@ -1,4 +1,5 @@
 using FluentMAUI.UI.EventArgs;
+using ToggledEventArgs = FluentMAUI.UI.EventArgs.ToggledEventArgs;
 
 namespace FluentMAUI.Samples.UI.Controls.ToggleButton;
 
@@ -13,7 +14,7 @@ public partial class ToggleButtonWithEvent : ContentPage
         BindingContext = _viewModel = viewModel;
     }
 
-    private void ToggleButton_OnChecked(object? sender, CheckedEventArgs e)
+    private void ToggleButton_OnChecked(object? sender, ToggledEventArgs e)
     {
         if (e.IsChecked)
         {
