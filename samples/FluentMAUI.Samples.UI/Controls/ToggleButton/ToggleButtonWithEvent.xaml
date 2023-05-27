@@ -21,7 +21,11 @@
                    Text="-" />
             <controls:ToggleButton Text="ToggleButton with Event"
                                    x:Name="ToggleButton"
-                                   Checked="ToggleButton_OnChecked"/>
+                                   Checked="ToggleButton_OnChecked"
+                                   BackgroundColor="Blue"
+                                   TextColor="White"
+                                   SelectedBackgroundColor="Red"
+                                   SelectedTextColor="Black"/>
             
         </VerticalStackLayout>
         

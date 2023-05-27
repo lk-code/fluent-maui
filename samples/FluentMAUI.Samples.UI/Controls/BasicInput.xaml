@@ -6,7 +6,8 @@
              xmlns:models="clr-namespace:FluentMAUI.Samples.UI.Models"
              xmlns:converter="clr-namespace:FluentMAUI.Samples.UI.Converter"
              x:Class="FluentMAUI.Samples.UI.Controls.BasicInput"
-             x:DataType="local:BasicInputVM">
+             x:DataType="local:BasicInputVM"
+             Title="Basic Input">
 
     <ContentPage.Resources>
         <ResourceDictionary>
