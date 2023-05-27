@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using CommunityToolkit.Maui;
+﻿using CommunityToolkit.Maui;
 using FluentMAUI.Configuration;
+using System.Reflection;
 
 namespace FluentMAUI.Samples.Configuration;
 

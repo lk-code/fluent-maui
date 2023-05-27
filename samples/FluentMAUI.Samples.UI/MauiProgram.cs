@@ -1,35 +1,44 @@
-﻿using FluentMAUI.UI;
-using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using FluentMAUI.UI;
+using FluentMAUI.UI.Controls;
 
 namespace FluentMAUI.Samples.UI;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
 
 
-		builder.UseFluentUi(options =>
-		{
-			
-		});
-		
-		
-		
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
+        builder.UseFluentUi(options =>
+        {
 
-		return builder.Build();
-	}
+        });
+
+
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainViewModel>();
+        
+        builder.Services.AddSingleton<Controls.BasicInput>();
+        builder.Services.AddSingleton<Controls.BasicInputVM>();
+        
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEvent>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEventVM>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommand>();
+        builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommandVM>();
+        
+        return builder.Build();
+    }
 }
 

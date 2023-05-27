@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls.ToggleButton"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"
+             xmlns:converter="clr-namespace:FluentMAUI.Samples.UI.Converter"
+             x:Class="FluentMAUI.Samples.UI.Controls.ToggleButton.ToggleButtonWithCommand"
+             x:DataType="local:ToggleButtonWithCommandVM">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ToggledEventArgsConverter x:Key="ToggledEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding ViewAppearingCommand}" />
+    </ContentPage.Behaviors>
+    
+    <ContentPage.Content>
+        
+        <VerticalStackLayout Padding="8">
+            
+            <Label Text="{Binding Message, Mode=OneWay}" />
+            <fmcontrols:ToggleButton Text="ToggleButton with Command"
+                                     BackgroundColor="Blue"
+                                     TextColor="White"
+                                     SelectedBackgroundColor="Red"
+                                     SelectedTextColor="Black">
+                <fmcontrols:ToggleButton.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="Toggled"
+                                                    Command="{Binding ToggleCommand}"
+                                                    EventArgsConverter="{StaticResource ToggledEventArgsConverter}" />
+                </fmcontrols:ToggleButton.Behaviors>
+            </fmcontrols:ToggleButton>
+            
+        </VerticalStackLayout>
+        
+    </ContentPage.Content>
+    
+</ContentPage>
