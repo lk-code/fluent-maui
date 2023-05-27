@@ -38,6 +38,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommand>();
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommandVM>();
         
+        builder.Services.AddSingleton<Controls.Layout>();
+        builder.Services.AddSingleton<Controls.LayoutVM>();
+        
         return builder.Build();
     }
 }

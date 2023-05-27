@@ -60,4 +60,8 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\source\FluentMAUI.UI\FluentMAUI.UI.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controls\Widget\" />
+	</ItemGroup>
 </Project>

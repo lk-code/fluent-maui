@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:FluentMAUI.Samples.UI.Models"
+             xmlns:converter="clr-namespace:FluentMAUI.Samples.UI.Converter"
+             x:Class="FluentMAUI.Samples.UI.Controls.Layout"
+             x:DataType="local:LayoutVM"
+             Title="Layout">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:SelectionChangedEventArgsConverter x:Key="SelectionChangedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding ViewAppearingCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <CollectionView SelectionMode="Single"
+                        ItemsSource="{Binding Pages, Mode=TwoWay}">
+            
+            <CollectionView.Behaviors>
+                <toolkit:EventToCommandBehavior EventName="SelectionChanged"
+                                                Command="{Binding NavigationSelectedCommand}"
+                                                EventArgsConverter="{StaticResource SelectionChangedEventArgsConverter}" />
+            </CollectionView.Behaviors>
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"
+                                 VerticalItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                
+                <DataTemplate x:DataType="models:PageItem">
+                    
+                    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+                        
+                        <Label VerticalOptions="CenterAndExpand"
+                               FontSize="16"
+                               Padding="4,8"
+                               Text="{Binding Title}" />
+                        
+                    </VerticalStackLayout>
+                    
+                </DataTemplate>
+                
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </ContentPage.Content>
+
+</ContentPage>
