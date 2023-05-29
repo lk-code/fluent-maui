@@ -17,5 +17,11 @@
             <ShellContent ContentTemplate="{DataTemplate controls:BasicInput}" />
         </Tab>
     </FlyoutItem>
+    
+    <FlyoutItem Title="Layout">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate controls:Layout}" />
+        </Tab>
+    </FlyoutItem>
 
 </Shell>

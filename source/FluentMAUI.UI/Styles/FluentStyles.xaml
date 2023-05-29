@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         
         <ResourceDictionary Source="/Styles/ToggleButton.xaml" />
+        <ResourceDictionary Source="/Styles/WidgetView.xaml" />
         
     </ResourceDictionary.MergedDictionaries>
     

@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:FluentMAUI.UI.Controls">
+
+    <Style TargetType="controls:WidgetView">
+        <Setter Property="BackgroundStyleType" Value="Gradient" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#000000"
+                        Offset="0,0"
+                        Radius="6"
+                        Opacity="0.4" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
