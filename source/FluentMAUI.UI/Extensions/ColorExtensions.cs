@@ -23,9 +23,12 @@ public static class ColorExtensions
     /// </summary>
     /// <param name="rgb"></param>
     /// <returns></returns>
-    public static Color ToColor(this RGB rgb)
+    public static Color ToColor(this RGB rgb, float alpha = 1)
     {
-        return new Color(rgb.R, rgb.G, rgb.B);
+        Color rgbColor = new Color(rgb.R, rgb.G, rgb.B);
+        Color color = Color.FromRgba(rgbColor.Red, rgbColor.Green, rgbColor.Blue, alpha);
+
+        return color;
     }
 
     /// <summary>
@@ -44,7 +47,9 @@ public static class ColorExtensions
         newLightness = Math.Min(newLightness, 100);
 
         HSL newColor = new HSL(hsl.H, hsl.S, Convert.ToSingle(newLightness));
-        return newColor.ToRGB().ToColor();
+        Color result = newColor.ToRGB().ToColor(color.Alpha);
+
+        return result;
     }
 
     /// <summary>
@@ -63,6 +68,6 @@ public static class ColorExtensions
         newLightness = Math.Min(newLightness, 100);
 
         HSL newColor = new HSL(hsl.H, hsl.S, Convert.ToSingle(newLightness));
-        return newColor.ToRGB().ToColor();
+        return newColor.ToRGB().ToColor(color.Alpha);
     }
 }

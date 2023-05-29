@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls.Widget"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"
+             xmlns:converter="clr-namespace:FluentMAUI.Samples.UI.Converter"
+             x:Class="FluentMAUI.Samples.UI.Controls.Widget.WidgetsInsideGrid"
+             x:DataType="local:WidgetsInsideGridVM">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding ViewAppearingCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        
+        <Grid Margin="20"
+              ColumnSpacing="20"
+              RowSpacing="20"
+              RowDefinitions="200,200,200,200,200,*"
+              ColumnDefinitions="*,*">
+
+            <fmcontrols:WidgetView Grid.Row="0" Grid.Column="0"
+                                   Background="Blue">
+            
+                <Label Text="WidgetView"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            
+            </fmcontrols:WidgetView>
+            
+            <fmcontrols:WidgetView Grid.Row="0" Grid.Column="1"
+                                   BackgroundColor="Red"
+                                   BackgroundStyleType="Gradient">
+            
+                <Label Text="WidgetView"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            
+            </fmcontrols:WidgetView>
+            
+            <fmcontrols:WidgetView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                   BackgroundColor="#88ffff00"
+                                   BackgroundStyleType="Gradient">
+            
+                <Label Text="WidgetView"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            
+            </fmcontrols:WidgetView>
+            
+            <fmcontrols:WidgetView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            
+                <Label Text="WidgetView"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            
+            </fmcontrols:WidgetView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

@@ -9,7 +9,7 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute("controls/togglebutton-with-event", typeof(Controls.ToggleButton.ToggleButtonWithEvent));
 		Routing.RegisterRoute("controls/togglebutton-with-command", typeof(Controls.ToggleButton.ToggleButtonWithCommand));
 		
-		Routing.RegisterRoute("controls/widgets", typeof(Controls.ToggleButton.ToggleButtonWithCommand));
+		Routing.RegisterRoute("controls/widgets", typeof(Controls.Widget.WidgetsInsideGrid));
 	}
 }
 

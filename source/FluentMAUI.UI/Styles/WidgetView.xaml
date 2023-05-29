@@ -3,7 +3,7 @@
                     xmlns:controls="clr-namespace:FluentMAUI.UI.Controls">
 
     <Style TargetType="controls:WidgetView">
-        <Setter Property="BackgroundColor" Value="#05000000" />
+        <Setter Property="BackgroundStyleType" Value="Gradient" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="StrokeShape" Value="RoundRectangle 10" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
