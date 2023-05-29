@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{593219D1-82EE-4D76-850A-2316725A9DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.Tests.UI", "..\tests\FluentMAUI.Tests.UI\FluentMAUI.Tests.UI.csproj", "{7FD65716-6439-42A7-9E64-CE88BFB1433B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Tests.UI", "..\tests\FluentMAUI.Tests.UI\FluentMAUI.Tests.UI.csproj", "{7FD65716-6439-42A7-9E64-CE88BFB1433B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +48,7 @@ Global
 		{F1B538D7-EC06-45E1-9AFC-46FA951E59B5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9B463D4-0B82-4BD7-B90C-B4E4CC7B7D89}.Release|Any CPU.Deploy.0 = Release|Any CPU
