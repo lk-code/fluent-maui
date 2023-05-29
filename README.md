@@ -41,12 +41,22 @@ you can use the EventToCommandBehavior from .NET MAUI Community Toolkit
 
 #### ToggleButton Theming
 
-* BackgroundColor: Color
-* TextColor: Color
-* CheckedBackgroundColor: Color
-* CheckedTextColor: Color
+* BackgroundColor: **Color**
+* TextColor: **Color**
+* CheckedBackgroundColor: **Color**
+* CheckedTextColor: **Color**
 
 ### WidgetView
+
+The WidgetView is based on the .NET MAUI Border control. You can use it to add any controls as child elements.
+
+`xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"`  
+`...`   
+`<fmcontrols:WidgetView />`
+
+#### WidgetView Theming
+
+* BackgroundStyleType: **BackgroundStyleTypes** (Flat, Gradient) - If the Gradient property is used and the BackgroundColor property has been set, then a gradient is automatically generated as the background. The gradient is based on BackgroundColor and becomes darker towards the bottom (15% by default). Alternatively, the background can be set directly with a brush.
 
 ## FluentMaui.Configuration
 An easy way to load appsettings into your .NET MAUI app.

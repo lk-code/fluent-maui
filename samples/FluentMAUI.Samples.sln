@@ -16,6 +16,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.UI", "..\source\FluentMAUI.UI\FluentMAUI.UI.csproj", "{043FD88A-C04D-434F-A8AF-71DEABE230F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{A182DFCE-1B7A-4691-840F-7F2BA77B6D51}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{2001D5B7-2649-489C-BD5C-B46E56C9D336}"
 	ProjectSection(SolutionItems) = preProject
