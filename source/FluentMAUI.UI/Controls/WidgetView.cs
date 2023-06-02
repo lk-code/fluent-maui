@@ -1,5 +1,5 @@
-using System.ComponentModel;
-using FluentMAUI.UI.Extensions;
+
+using FluentMAUI.Core.Extensions;
 
 namespace FluentMAUI.UI.Controls;
 

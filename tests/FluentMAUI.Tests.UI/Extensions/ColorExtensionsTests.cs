@@ -1,6 +1,6 @@
 using FluentAssertions;
-using FluentMAUI.UI.Core.Color;
-using FluentMAUI.UI.Extensions;
+using FluentMAUI.Core.Color;
+using FluentMAUI.Core.Extensions;
 using Microsoft.Maui.Graphics;
 
 namespace FluentMAUI.Tests.UI.Extensions;
