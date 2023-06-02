@@ -1,16 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls.ToggleButton"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"
-             xmlns:converter="clr-namespace:FluentMAUI.Samples.UI.Converter"
-             x:Class="FluentMAUI.Samples.UI.Controls.ToggleButton.ToggleButtonWithCommand"
-             x:DataType="local:ToggleButtonWithCommandVM">
+             x:Class="FluentMAUI.Samples.UI.Controls.ToggleButton.ToggleButtonWithBinding"
+             x:DataType="local:ToggleButtonWithBindingVM">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:ToggledEventArgsConverter x:Key="ToggledEventArgsConverter" />
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -18,26 +18,29 @@
         <toolkit:EventToCommandBehavior EventName="Appearing"
                                         Command="{Binding ViewAppearingCommand}" />
     </ContentPage.Behaviors>
-    
+
     <ContentPage.Content>
-        
+
         <VerticalStackLayout Padding="8">
-            
-            <Label Text="{Binding Message, Mode=OneWay}" />
+
+            <Label Text="checked"
+                   IsVisible="{Binding Source={x:Reference ToggleButton}, Path=BindingContext.IsChecked}" />
+            <Label Text="not checked"
+                   IsVisible="{Binding Source={x:Reference ToggleButton}, Path=BindingContext.IsChecked, Converter={StaticResource InvertedBoolConverter}}" />
+
             <fmcontrols:ToggleButton Text="ToggleButton with Command"
+                                     x:Name="ToggleButton"
                                      BackgroundColor="Blue"
                                      TextColor="White"
+                                     IsChecked="{Binding IsChecked, Mode=TwoWay}"
                                      CheckedBackgroundColor="Red"
-                                     CheckedTextColor="Black">
-                <fmcontrols:ToggleButton.Behaviors>
-                    <toolkit:EventToCommandBehavior EventName="Toggled"
-                                                    Command="{Binding ToggleCommand}"
-                                                    EventArgsConverter="{StaticResource ToggledEventArgsConverter}" />
-                </fmcontrols:ToggleButton.Behaviors>
-            </fmcontrols:ToggleButton>
-            
+                                     CheckedTextColor="Black" />
+
+            <Button Command="{Binding ToggleCommand}" Text="Toggle via Binding"
+                    Margin="0,12,0,0" />
+
         </VerticalStackLayout>
-        
+
     </ContentPage.Content>
-    
+
 </ContentPage>

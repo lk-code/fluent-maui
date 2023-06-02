@@ -8,58 +8,73 @@ public class ToggleButton : Button, IToggleButton
     private Color _primaryBackgroundColor = null;
     private Brush _primaryBackground = null;
     private Color _primaryTextColor = null;
-
-    private bool _isChecked = false;
-
-    public bool IsChecked
-    {
-        get { return this._isChecked; }
-        set
-        {
-            this.OnPropertyChanging();
-
-            this._isChecked = value;
-
-            this.OnPropertyChanged();
-        }
-    }
-
     public event EventHandler<ToggledEventArgs> Toggled = (e, a) => { };
 
-    public static readonly BindableProperty SelectedBackgroundColorProperty = BindableProperty.Create(
-        "SelectedBackgroundColor",
+    public static readonly BindableProperty CheckedBackgroundColorProperty = BindableProperty.Create(
+        "CheckedBackgroundColor",
         typeof(Color),
         typeof(ToggleButton),
         null);
 
-    public Color SelectedBackgroundColor
+    public Color CheckedBackgroundColor
     {
-        get => (Color)GetValue(SelectedBackgroundColorProperty);
-        set => SetValue(SelectedBackgroundColorProperty, value);
+        get => (Color)GetValue(CheckedBackgroundColorProperty);
+        set => SetValue(CheckedBackgroundColorProperty, value);
     }
 
-    public static readonly BindableProperty SelectedBackgroundProperty = BindableProperty.Create(
-        "SelectedBackground",
+    public static readonly BindableProperty CheckedBackgroundProperty = BindableProperty.Create(
+        "CheckedBackground",
         typeof(Brush),
         typeof(ToggleButton),
         null);
 
-    public Brush SelectedBackground
+    public Brush CheckedBackground
     {
-        get => (Brush)GetValue(SelectedBackgroundProperty);
-        set => SetValue(SelectedBackgroundProperty, value);
+        get => (Brush)GetValue(CheckedBackgroundProperty);
+        set => SetValue(CheckedBackgroundProperty, value);
     }
 
-    public static readonly BindableProperty SelectedTextColorProperty = BindableProperty.Create(
-        "SelectedTextColor",
+    public static readonly BindableProperty CheckedTextColorProperty = BindableProperty.Create(
+        "CheckedTextColor",
         typeof(Color),
         typeof(ToggleButton),
         null);
 
-    public Color SelectedTextColor
+    public Color CheckedTextColor
     {
-        get => (Color)GetValue(SelectedTextColorProperty);
-        set => SetValue(SelectedTextColorProperty, value);
+        get => (Color)GetValue(CheckedTextColorProperty);
+        set => SetValue(CheckedTextColorProperty, value);
+    }
+
+    public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
+        "IsChecked",
+        typeof(bool),
+        typeof(ToggleButton),
+        null,
+        BindingMode.TwoWay,
+        propertyChanged: OnIsCheckedPropertyChanged);
+
+    public bool IsChecked
+    {
+        get => (bool)GetValue(IsCheckedProperty);
+        set
+        {
+            this.OnPropertyChanging();
+
+            SetValue(IsCheckedProperty, value);
+
+            this.OnPropertyChanged();
+        }
+    }
+    
+    private static void OnIsCheckedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        var control = (ToggleButton)bindable;
+        
+        ToggledEventArgs eventArgs = control.CreateEventArgs();
+        control.Toggled?.Invoke(control, eventArgs);
+
+        control.ToggleColor();
     }
 
     public ToggleButton() : base()
@@ -82,19 +97,19 @@ public class ToggleButton : Button, IToggleButton
     public void Toggle()
     {
         this.IsChecked = !this.IsChecked;
+    }
 
-        ToggledEventArgs eventArgs = this.CreateEventArgs();
-        this.Toggled?.Invoke(this, eventArgs);
-
+    private void ToggleColor()
+    {
         if (this.IsChecked)
         {
             this._primaryBackgroundColor = this.BackgroundColor;
             this._primaryBackground = this.Background;
             this._primaryTextColor = this.TextColor;
 
-            this.BackgroundColor = this.SelectedBackgroundColor;
-            this.Background = this.SelectedBackground;
-            this.TextColor = this.SelectedTextColor;
+            this.BackgroundColor = this.CheckedBackgroundColor;
+            this.Background = this.CheckedBackground;
+            this.TextColor = this.CheckedTextColor;
         }
         else
         {
