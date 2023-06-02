@@ -66,6 +66,6 @@
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="FluentMAUI.Core" Version="1.0.0" />
+	  <PackageReference Include="FluentMAUI.Core" Version="1.0.2" />
 	</ItemGroup>
 </Project>
