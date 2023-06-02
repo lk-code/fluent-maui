@@ -55,6 +55,6 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-	  <PackageReference Include="FluentMAUI.Core" Version="1.0.0" />
+	  <PackageReference Include="FluentMAUI.Core" Version="1.0.2" />
 	</ItemGroup>
 </Project>
