@@ -8,22 +8,6 @@ public class ToggleButton : Button, IToggleButton
     private Color _primaryBackgroundColor = null;
     private Brush _primaryBackground = null;
     private Color _primaryTextColor = null;
-
-    private bool _isChecked = false;
-
-    public bool IsChecked
-    {
-        get { return this._isChecked; }
-        set
-        {
-            this.OnPropertyChanging();
-
-            this._isChecked = value;
-
-            this.OnPropertyChanged();
-        }
-    }
-
     public event EventHandler<ToggledEventArgs> Toggled = (e, a) => { };
 
     public static readonly BindableProperty SelectedBackgroundColorProperty = BindableProperty.Create(
@@ -62,6 +46,37 @@ public class ToggleButton : Button, IToggleButton
         set => SetValue(SelectedTextColorProperty, value);
     }
 
+    public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
+        "IsChecked",
+        typeof(bool),
+        typeof(ToggleButton),
+        null,
+        BindingMode.TwoWay,
+        propertyChanged: OnIsCheckedPropertyChanged);
+
+    public bool IsChecked
+    {
+        get => (bool)GetValue(IsCheckedProperty);
+        set
+        {
+            this.OnPropertyChanging();
+
+            SetValue(IsCheckedProperty, value);
+
+            this.OnPropertyChanged();
+        }
+    }
+    
+    private static void OnIsCheckedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        var control = (ToggleButton)bindable;
+        
+        ToggledEventArgs eventArgs = control.CreateEventArgs();
+        control.Toggled?.Invoke(control, eventArgs);
+
+        control.ToggleColor();
+    }
+
     public ToggleButton() : base()
     {
         this.Clicked += ToggleButton_Clicked;
@@ -82,10 +97,10 @@ public class ToggleButton : Button, IToggleButton
     public void Toggle()
     {
         this.IsChecked = !this.IsChecked;
+    }
 
-        ToggledEventArgs eventArgs = this.CreateEventArgs();
-        this.Toggled?.Invoke(this, eventArgs);
-
+    private void ToggleColor()
+    {
         if (this.IsChecked)
         {
             this._primaryBackgroundColor = this.BackgroundColor;
