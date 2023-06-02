@@ -1,4 +1,4 @@
-namespace FluentMAUI.UI.Core.Color;
+namespace FluentMAUI.Core.Color;
 
 public struct HSL
 {
