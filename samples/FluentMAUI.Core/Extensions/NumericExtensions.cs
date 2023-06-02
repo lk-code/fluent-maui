@@ -1,4 +1,4 @@
-namespace FluentMAUI.UI.Extensions;
+namespace FluentMAUI.Core.Extensions;
 
 public static class NumericExtensions
 {
