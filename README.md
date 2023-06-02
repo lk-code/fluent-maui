@@ -16,6 +16,13 @@ First you need to initialize FluentMaui.UI in your MauiProgram.cs:
 `{`   
 `});`
 
+In your App.xaml, add the following lines for the styles:
+
+`xmlns:fmui="clr-namespace:FluentMAUI.UI;assembly=FluentMAUI.UI"`  
+`...`   
+`<!-- add this line for FluentMAUI.UI Styles-->`   
+`<fmui:FluentStyles />`
+
 ### ToggleButton
 
 `xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"`  
