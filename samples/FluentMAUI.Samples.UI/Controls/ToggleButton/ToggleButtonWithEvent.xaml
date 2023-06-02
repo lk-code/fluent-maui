@@ -25,8 +25,8 @@
                                      Toggled="ToggleButton_OnChecked"
                                      BackgroundColor="Blue"
                                      TextColor="White"
-                                     SelectedBackgroundColor="Red"
-                                     SelectedTextColor="Black"/>
+                                     CheckedBackgroundColor="Red"
+                                     CheckedTextColor="Black"/>
             
         </VerticalStackLayout>
         

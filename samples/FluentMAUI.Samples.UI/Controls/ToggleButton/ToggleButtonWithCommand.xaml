@@ -27,8 +27,8 @@
             <fmcontrols:ToggleButton Text="ToggleButton with Command"
                                      BackgroundColor="Blue"
                                      TextColor="White"
-                                     SelectedBackgroundColor="Red"
-                                     SelectedTextColor="Black">
+                                     CheckedBackgroundColor="Red"
+                                     CheckedTextColor="Black">
                 <fmcontrols:ToggleButton.Behaviors>
                     <toolkit:EventToCommandBehavior EventName="Toggled"
                                                     Command="{Binding ToggleCommand}"

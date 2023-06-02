@@ -34,6 +34,11 @@ In your App.xaml, add the following lines for the styles:
 `<fmcontrols:ToggleButton Text="ToggleButton with Event"`   
 ` Toggled="ToggleButton_OnChecked" />`
 
+#### access via Binding
+
+`<fmcontrols:ToggleButton Text="ToggleButton with Binding"`   
+` IsChecked="{Binding IsChecked, Mode=TwoWay}" />`
+
 #### access via Command
 
 you can use the EventToCommandBehavior from .NET MAUI Community Toolkit
@@ -63,26 +68,35 @@ The WidgetView is based on the .NET MAUI Border control. You can use it to add a
 
 #### WidgetView Theming
 
-* BackgroundStyleType: **BackgroundStyleTypes** (Flat, Gradient) - If the Gradient property is used and the BackgroundColor property has been set, then a gradient is automatically generated as the background. The gradient is based on BackgroundColor and becomes darker towards the bottom (15% by default). Alternatively, the background can be set directly with a brush.
+* BackgroundStyleType: **BackgroundStyleTypes** (Flat, Gradient) - If the Gradient property is used and the
+  BackgroundColor property has been set, then a gradient is automatically generated as the background. The gradient is
+  based on BackgroundColor and becomes darker towards the bottom (15% by default). Alternatively, the background can be
+  set directly with a brush.
 
 ## FluentMaui.Configuration
+
 An easy way to load appsettings into your .NET MAUI app.
 
-Also, besides the primary appsettings.json, there is an option to load appsettings per platform and environment (e.g. **appsettings.android.json**, **appsettings.Debug.json** or **appsettings.ios.Release.json**, etc.).
+Also, besides the primary appsettings.json, there is an option to load appsettings per platform and environment (e.g. *
+*appsettings.android.json**, **appsettings.Debug.json** or **appsettings.ios.Release.json**, etc.).
 
-The filename pattern is as follows: **appsettings.{platform}.{environment}.json** (platform and environment are both optional)
+The filename pattern is as follows: **appsettings.{platform}.{environment}.json** (platform and environment are both
+optional)
 
 **platforms:**
+
 * maccatalyst
 * ios
 * android
 * winui
 
 **environments:**
+
 * Debug
 * Release
 
 ### configure
+
 `builder.UseFluentConfiguration(options =>`  
 `{`  
 `// LoadAppsettingsFrom-Assembly is optional for ios, macos, winui BUT REQUIRED on android`  

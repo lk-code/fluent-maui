@@ -10,40 +10,40 @@ public class ToggleButton : Button, IToggleButton
     private Color _primaryTextColor = null;
     public event EventHandler<ToggledEventArgs> Toggled = (e, a) => { };
 
-    public static readonly BindableProperty SelectedBackgroundColorProperty = BindableProperty.Create(
-        "SelectedBackgroundColor",
+    public static readonly BindableProperty CheckedBackgroundColorProperty = BindableProperty.Create(
+        "CheckedBackgroundColor",
         typeof(Color),
         typeof(ToggleButton),
         null);
 
-    public Color SelectedBackgroundColor
+    public Color CheckedBackgroundColor
     {
-        get => (Color)GetValue(SelectedBackgroundColorProperty);
-        set => SetValue(SelectedBackgroundColorProperty, value);
+        get => (Color)GetValue(CheckedBackgroundColorProperty);
+        set => SetValue(CheckedBackgroundColorProperty, value);
     }
 
-    public static readonly BindableProperty SelectedBackgroundProperty = BindableProperty.Create(
-        "SelectedBackground",
+    public static readonly BindableProperty CheckedBackgroundProperty = BindableProperty.Create(
+        "CheckedBackground",
         typeof(Brush),
         typeof(ToggleButton),
         null);
 
-    public Brush SelectedBackground
+    public Brush CheckedBackground
     {
-        get => (Brush)GetValue(SelectedBackgroundProperty);
-        set => SetValue(SelectedBackgroundProperty, value);
+        get => (Brush)GetValue(CheckedBackgroundProperty);
+        set => SetValue(CheckedBackgroundProperty, value);
     }
 
-    public static readonly BindableProperty SelectedTextColorProperty = BindableProperty.Create(
-        "SelectedTextColor",
+    public static readonly BindableProperty CheckedTextColorProperty = BindableProperty.Create(
+        "CheckedTextColor",
         typeof(Color),
         typeof(ToggleButton),
         null);
 
-    public Color SelectedTextColor
+    public Color CheckedTextColor
     {
-        get => (Color)GetValue(SelectedTextColorProperty);
-        set => SetValue(SelectedTextColorProperty, value);
+        get => (Color)GetValue(CheckedTextColorProperty);
+        set => SetValue(CheckedTextColorProperty, value);
     }
 
     public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
@@ -107,9 +107,9 @@ public class ToggleButton : Button, IToggleButton
             this._primaryBackground = this.Background;
             this._primaryTextColor = this.TextColor;
 
-            this.BackgroundColor = this.SelectedBackgroundColor;
-            this.Background = this.SelectedBackground;
-            this.TextColor = this.SelectedTextColor;
+            this.BackgroundColor = this.CheckedBackgroundColor;
+            this.Background = this.CheckedBackground;
+            this.TextColor = this.CheckedTextColor;
         }
         else
         {
