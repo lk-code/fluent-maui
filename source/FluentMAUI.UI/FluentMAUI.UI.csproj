@@ -34,6 +34,9 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Controls\" />
 	</ItemGroup>
@@ -61,5 +64,8 @@
 	  <MauiXaml Update="Styles\FluentStyles.xaml">
 	    <SubType>Designer</SubType>
 	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="FluentMAUI.Core" Version="1.0.0" />
 	</ItemGroup>
 </Project>

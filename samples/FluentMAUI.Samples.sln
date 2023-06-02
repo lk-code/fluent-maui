@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{593219D1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentMAUI.Tests.UI", "..\tests\FluentMAUI.Tests.UI\FluentMAUI.Tests.UI.csproj", "{7FD65716-6439-42A7-9E64-CE88BFB1433B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.Core", "FluentMAUI.Core\FluentMAUI.Core.csproj", "{19E655B3-8454-4F92-849C-9F55B5F69B4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentMAUI.Core", "..\source\FluentMAUI.Core\FluentMAUI.Core.csproj", "{19E655B3-8454-4F92-849C-9F55B5F69B4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
