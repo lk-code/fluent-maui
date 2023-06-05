@@ -3,7 +3,7 @@ using Microsoft.Maui.Controls;
 
 namespace FluentMAUI.UI.Controls;
 
-public class SlideContentView : ContentView
+public class SlideContentView : ContentView, IViewContainer<SlideContentPage>
 {
     private StackLayout _tabBarStackLayout;
     private ScrollView _tabBarScrollView;
