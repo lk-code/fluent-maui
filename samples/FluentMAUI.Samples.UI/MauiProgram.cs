@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using FluentMAUI.UI;
 using FluentMAUI.UI.Controls;
 using Microsoft.Maui.LifecycleEvents;
@@ -48,6 +48,9 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<Controls.BasicInput>();
         builder.Services.AddSingleton<Controls.BasicInputVM>();
+
+        builder.Services.AddSingleton<Controls.SlideContentView.SlideContentViewDefault>();
+        builder.Services.AddSingleton<Controls.SlideContentView.SlideContentViewDefaultVM>();
 
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEvent>();
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEventVM>();

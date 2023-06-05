@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FluentMAUI.Samples.UI.Controls.SlideContentView"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:fmcontrols="clr-namespace:FluentMAUI.UI.Controls;assembly=FluentMAUI.UI"
+             x:Class="FluentMAUI.Samples.UI.Controls.SlideContentView.SlideContentViewDefault"
+             x:DataType="local:SlideContentViewDefaultVM">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding ViewAppearingCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <fmcontrols:SlideContentView>
+            <!-- <fmcontrols:SlideContentPage Title="Tab I" /> -->
+            <!-- <fmcontrols:SlideContentPage Title="Tab II" /> -->
+            <!-- <fmcontrols:SlideContentPage Title="Tab III" /> -->
+        </fmcontrols:SlideContentView>
+
+    </ContentPage.Content>
+
+</ContentPage>

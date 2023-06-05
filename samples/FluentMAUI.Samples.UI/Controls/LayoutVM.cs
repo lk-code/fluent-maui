@@ -11,7 +11,6 @@ public partial class LayoutVM : ObservableObject
 
     public LayoutVM()
     {
-
     }
 
     [RelayCommand]
@@ -19,7 +18,9 @@ public partial class LayoutVM : ObservableObject
     {
         this.Pages.Clear();
 
-        this.Pages.Add(new("Widgets", "controls/widgets"));
+        this.Pages.Add(new("WidgetView", "controls/widgets"));
+
+        this.Pages.Add(new("SlideContentView", "controls/slidecontentview-default"));
     }
 
     [RelayCommand]
@@ -30,7 +31,7 @@ public partial class LayoutVM : ObservableObject
         {
             return;
         }
-        
+
         await Shell.Current.GoToAsync(page.Route, true);
     }
 }
