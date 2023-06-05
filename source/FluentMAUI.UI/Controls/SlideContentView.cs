@@ -1,18 +1,35 @@
+using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Maui.Controls;
 
 namespace FluentMAUI.UI.Controls;
 
+[DesignTimeVisible(true)]
+[ContentProperty(nameof(Children))]
 public class SlideContentView : ContentView, IViewContainer<SlideContentPage>
 {
     private StackLayout _tabBarStackLayout;
     private ScrollView _tabBarScrollView;
     private CarouselView _contentCarouselView;
     private Grid _mainViewGrid;
-    private IList<View> _items;
+
+    public static readonly BindableProperty ChildrenProperty = BindableProperty.Create(
+        "Children",
+        typeof(IList<SlideContentPage>),
+        typeof(SlideContentView),
+        default(IList<SlideContentPage>),
+        propertyChanged: OnChildrenChanged);
+
+    public IList<SlideContentPage> Children
+    {
+        get => (IList<SlideContentPage>)GetValue(ChildrenProperty);
+        set => SetValue(ChildrenProperty, value);
+    }
 
     public SlideContentView()
     {
+        this.Children = new List<SlideContentPage>();
+
         this.CreateUILayout();
         this.RenderUI();
     }
@@ -24,7 +41,7 @@ public class SlideContentView : ContentView, IViewContainer<SlideContentPage>
         {
             Orientation = StackOrientation.Horizontal
         };
-        
+
         // ScrollView
         this._tabBarScrollView = new ScrollView
         {
@@ -34,11 +51,10 @@ public class SlideContentView : ContentView, IViewContainer<SlideContentPage>
             VerticalScrollBarVisibility = ScrollBarVisibility.Never,
             Content = this._tabBarStackLayout
         };
-        
+
         // Content CarousselView
         this._contentCarouselView = new CarouselView()
         {
-            BackgroundColor = Colors.Yellow,
             ItemTemplate = new DataTemplate(() =>
             {
                 var contentPresenter = new ContentPresenter();
@@ -61,51 +77,33 @@ public class SlideContentView : ContentView, IViewContainer<SlideContentPage>
 
     private void RenderUI()
     {
-        // Tab Bar
-        for (int i = 0; i < 5; i++)
+        IList<View> items = new List<View>();
+        foreach (SlideContentPage item in this.Children)
         {
-            SlideContentPage tabBarButton = new SlideContentPage()
-            {
-                Text = $"Tab {(i + 1)}",
-                Margin = new Thickness(8, 0, 8, 0),
-                Padding = new Thickness(16, 0, 16, 0),
-                TabContent = new StackLayout()
-                {
-                    Orientation = StackOrientation.Vertical,
-                    Children =
-                    {
-                        new Label { Text = $"Content Page {i}" },
-                        new Button() { Text = "Click" }
-                    },
-                    Padding = new Thickness(8, 0, 8, 0)
-                }
-            };
+            Button tabBarButton = (item as Button);
             tabBarButton.Clicked += ChangeSelectedTab;
             this._tabBarStackLayout.Children.Add(tabBarButton);
+
+            items.Add(item.TabContent);
         }
 
-        // Content
-        this._items = new List<View>();
-        for (int i = 1; i <= 5; i++)
-        {
-            StackLayout stackLayout = new StackLayout()
-            {
-                Orientation = StackOrientation.Vertical,
-                Children =
-                {
-                    new Label { Text = $"Content Page {i}" },
-                    new Button() { Text = "Click" }
-                },
-                Padding = new Thickness(8, 0, 8, 0)
-            };
-            this._items.Add(stackLayout);
-        }
-
-        this._contentCarouselView.ItemsSource = this._items;
+        this._contentCarouselView.ItemsSource = items;
     }
 
     private void ChangeSelectedTab(object sender, System.EventArgs e)
     {
-        
+        SlideContentPage selected = (sender as SlideContentPage);
+        this._contentCarouselView.CurrentItem = selected.TabContent;
+    }
+
+    private static void OnChildrenChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        if (bindable is SlideContentView slideContentView
+            && newValue is IList<SlideContentPage> slideContentPages
+            && slideContentView.Children is not null)
+        {
+            // render delta
+            int i = 0;
+        }
     }
 }

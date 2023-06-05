@@ -1,12 +1,14 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="FluentMAUI.UI.FluentStyles">
-    
+
     <ResourceDictionary.MergedDictionaries>
-        
+
         <ResourceDictionary Source="/Styles/ToggleButton.xaml" />
         <ResourceDictionary Source="/Styles/WidgetView.xaml" />
-        
+        <ResourceDictionary Source="/Styles/SlideContentView.xaml" />
+        <ResourceDictionary Source="/Styles/SlideContentPage.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
-    
+
 </ResourceDictionary>

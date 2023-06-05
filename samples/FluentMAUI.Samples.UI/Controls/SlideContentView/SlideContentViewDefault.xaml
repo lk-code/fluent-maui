@@ -16,9 +16,24 @@
     <ContentPage.Content>
 
         <fmcontrols:SlideContentView>
-            <!-- <fmcontrols:SlideContentPage Title="Tab I" /> -->
-            <!-- <fmcontrols:SlideContentPage Title="Tab II" /> -->
-            <!-- <fmcontrols:SlideContentPage Title="Tab III" /> -->
+            <fmcontrols:SlideContentPage Text="Tab I">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Hello World" />
+                    <Button Text="Click Me" />
+                </StackLayout>
+            </fmcontrols:SlideContentPage>
+            <fmcontrols:SlideContentPage Text="Tab II">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Next Page" />
+                    <Button Text="Click Me" />
+                </StackLayout>
+            </fmcontrols:SlideContentPage>
+            <fmcontrols:SlideContentPage Text="Tab III">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Last Page :D" />
+                    <Button Text="Click Me" />
+                </StackLayout>
+            </fmcontrols:SlideContentPage>
         </fmcontrols:SlideContentView>
 
     </ContentPage.Content>

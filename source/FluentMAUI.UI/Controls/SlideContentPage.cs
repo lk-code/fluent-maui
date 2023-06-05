@@ -1,5 +1,9 @@
+using System.ComponentModel;
+
 namespace FluentMAUI.UI.Controls;
 
+[DesignTimeVisible(true)]
+[ContentProperty(nameof(TabContent))]
 public class SlideContentPage : Button
 {
     public static readonly BindableProperty TabContentProperty = BindableProperty.Create(

@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:FluentMAUI.UI.Controls">
+
+    <Style TargetType="controls:SlideContentPage">
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Padding" Value="8,4,8,4" />
+        <Setter Property="Margin" Value="8,0,8,0" />
+    </Style>
+
+</ResourceDictionary>
