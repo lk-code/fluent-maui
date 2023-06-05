@@ -11,13 +11,14 @@ public partial class BasicInputVM : ObservableObject
 
     public BasicInputVM()
     {
-
     }
 
     [RelayCommand]
     public async Task OnViewAppearingAsync(CancellationToken cancellationToken)
     {
         this.Pages.Clear();
+
+        this.Pages.Add(new("Segmented Group with Event", "controls/segmentedgroup-with-event"));
 
         this.Pages.Add(new("Toggle Button with Event", "controls/togglebutton-with-event"));
         this.Pages.Add(new("Toggle Button with Command", "controls/togglebutton-with-command"));
@@ -32,7 +33,7 @@ public partial class BasicInputVM : ObservableObject
         {
             return;
         }
-        
+
         await Shell.Current.GoToAsync(page.Route, true);
     }
 }

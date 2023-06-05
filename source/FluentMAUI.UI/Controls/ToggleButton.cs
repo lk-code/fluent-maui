@@ -5,9 +5,9 @@ namespace FluentMAUI.UI.Controls;
 
 public class ToggleButton : Button, IToggleButton
 {
-    private Color _primaryBackgroundColor = null;
-    private Brush _primaryBackground = null;
-    private Color _primaryTextColor = null;
+    private Color _primaryBackgroundColor = null!;
+    private Brush _primaryBackground = null!;
+    private Color _primaryTextColor = null!;
     public event EventHandler<ToggledEventArgs> Toggled = (e, a) => { };
 
     public static readonly BindableProperty CheckedBackgroundColorProperty = BindableProperty.Create(
@@ -66,11 +66,11 @@ public class ToggleButton : Button, IToggleButton
             this.OnPropertyChanged();
         }
     }
-    
+
     private static void OnIsCheckedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        var control = (ToggleButton)bindable;
-        
+        ToggleButton control = (ToggleButton)bindable;
+
         ToggledEventArgs eventArgs = control.CreateEventArgs();
         control.Toggled?.Invoke(control, eventArgs);
 

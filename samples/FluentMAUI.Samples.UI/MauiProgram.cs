@@ -49,6 +49,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<Controls.BasicInput>();
         builder.Services.AddSingleton<Controls.BasicInputVM>();
 
+        builder.Services.AddSingleton<Controls.SegmentedGroup.SegmentedGroupWithEvent>();
+        builder.Services.AddSingleton<Controls.SegmentedGroup.SegmentedGroupWithEventVM>();
+
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEvent>();
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithEventVM>();
         builder.Services.AddSingleton<Controls.ToggleButton.ToggleButtonWithCommand>();
