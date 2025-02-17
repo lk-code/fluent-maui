@@ -3,38 +3,55 @@ name: FluentMAUI Build
 on:
   workflow_dispatch:
 
+env:
+  Version: 8.0.${{ github.run_number }}
+
 jobs:
+
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        project:
-          - csproj: source/FluentMAUI.Core/FluentMAUI.Core.csproj
-            nuget: source/FluentMAUI.Core/**/*.nupkg
-          - csproj: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
-            nuget: source/FluentMAUI.Configuration/**/*.nupkg
-          - csproj: source/FluentMAUI.UI/FluentMAUI.UI.csproj
-            nuget: source/FluentMAUI.UI/**/*.nupkg
-      max-parallel: 1
-
-    env:
-      Version: 8.0.${{ github.run_number }}
 
     steps:
-      - name: Repository auschecken
+      - name: Git Checkout
         uses: actions/checkout@v4
 
-      - name: .NET einrichten
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      - name: MAUI Workloads installieren
+      - name: Setup .NET MAUI Workloads
         run: dotnet workload install maui --ignore-failed-sources
 
-      - name: Dotnet MAUI Build Steps ausführen
-        uses: ./actions/dotnet-maui-build
+      - name: Build FluentMAUI.Core
+        uses: ./.github/actions/dotnet-maui-build
         with:
           version: ${{ env.Version }}
-          project: ${{ matrix.project.csproj }}
-          nugetPackage: ${{ matrix.project.nuget }}
+          project: source/FluentMAUI.Core/FluentMAUI.Core.csproj
+          nugetPackage: source/FluentMAUI.Core/**/*.nupkg
+
+      - name: Build FluentMAUI.Configuration
+        uses: ./.github/actions/dotnet-maui-build
+        with:
+          version: ${{ env.Version }}
+          project: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
+          nugetPackage: source/FluentMAUI.Configuration/**/*.nupkg
+
+      - name: Build FluentMAUI.UI
+        uses: ./.github/actions/dotnet-maui-build
+        with:
+          version: ${{ env.Version }}
+          project: source/FluentMAUI.UI/FluentMAUI.UI.csproj
+          nugetPackage: source/FluentMAUI.UI/**/*.nupkg
+ 
+  post-build:
+    runs-on: linux-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Set Version Git Tag
+        run: |
+          git tag ${{ env.VERSION }}
+          git push origin ${{ env.VERSION }}
