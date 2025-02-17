@@ -1,0 +1,40 @@
+name: Dotnet MAUI Build Matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        project:
+          - csproj: source/FluentMAUI.Core/FluentMAUI.Core.csproj
+            nuget: source/FluentMAUI.Core/**/*.nupkg
+          - csproj: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
+            nuget: source/FluentMAUI.Configuration/**/*.nupkg
+          - csproj: source/FluentMAUI.UI/FluentMAUI.UI.csproj
+            nuget: source/FluentMAUI.UI/**/*.nupkg
+      max-parallel: 1
+
+    env:
+      Version: 8.0.${{ github.run_number }}
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: .NET einrichten
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: MAUI Workloads installieren
+        run: dotnet workload install maui --ignore-failed-sources
+
+      - name: Dotnet MAUI Build Steps ausführen
+        uses: ./actions/dotnet-maui-build
+        with:
+          version: ${{ env.Version }}
+          project: ${{ matrix.project.csproj }}
+          nugetPackage: ${{ matrix.project.nuget }}
