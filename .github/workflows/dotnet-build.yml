@@ -1,4 +1,4 @@
-name: Dotnet MAUI Build Matrix
+name: FluentMAUI Build
 
 on:
   workflow_dispatch:
