@@ -15,16 +15,16 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: 8.0.x
 
-      - name: Setup .NET MAUI Workloads
-        run: dotnet workload install maui --ignore-failed-sources
+      # - name: Setup .NET MAUI Workloads
+      #   run: dotnet workload install maui --ignore-failed-sources
 
       - name: Build FluentMAUI.Core
-        uses: ./.github/actions/dotnet-maui-build
+        uses: ./../actions/dotnet-maui-build
         with:
           version: ${{ env.Version }}
           project: source/FluentMAUI.Core/FluentMAUI.Core.csproj
