@@ -24,7 +24,7 @@ jobs:
       #   run: dotnet workload install maui --ignore-failed-sources
 
       - name: Build FluentMAUI.Core
-        uses: ./actions/dotnet-maui-build
+        uses: ./.github/actions/dotnet-maui-build
         with:
           version: ${{ env.Version }}
           project: source/FluentMAUI.Core/FluentMAUI.Core.csproj
