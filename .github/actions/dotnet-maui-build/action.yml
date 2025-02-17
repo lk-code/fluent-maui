@@ -1,0 +1,35 @@
+name: "Dotnet Steps"
+description: "Composite Action für Update Version, Restore dependencies, Build und Archive artifacts"
+inputs:
+  version:
+    description: "Die Version, die gesetzt werden soll."
+    required: true
+  project:
+    description: "Pfad zur Projektdatei."
+    required: true
+  nugetPackage:
+    description: "Pfad zu den NuGet-Paket-Artefakten."
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Update Version
+      uses: roryprimrose/set-vs-sdk-project-version@v1.0.6
+      with:
+        projectFilter: ${{ inputs.project }}
+        version: ${{ inputs.version }}
+        assemblyVersion: ${{ inputs.version }}
+        fileVersion: ${{ inputs.version }}
+        informationalVersion: ${{ inputs.version }}
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ inputs.project }}
+
+    - name: Build
+      run: dotnet build ${{ inputs.project }} --configuration Release --no-restore
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: nuget packages
+        path: ${{ inputs.nugetPackage }}

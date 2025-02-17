@@ -5,28 +5,31 @@ on: workflow_dispatch
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     env:
-      Configuration: Release
-      Version: 1.0.${{ github.run_number }}
+      Version: 8.0.${{ github.run_number }}
       Project: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
       NugetPackage: source/**/*.nupkg
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
+        
+    - name: Install MAUI Workloads
+      run: |
+        dotnet workload install maui --ignore-failed-sources
 
-    - name: Version Visual Studio SDK projects
+    - name: Update Version
       uses: roryprimrose/set-vs-sdk-project-version@v1.0.6
       with:
         # The wildcard filter that identifies projects to version
-        projectFilter: source/FluentMAUI.Configuration/FluentMAUI.Configuration.csproj
+        projectFilter: ${{ env.Project }}
         # Maps to the Version element
         version: ${{ env.Version }}
         # Maps to the AssemblyVersion element
@@ -36,17 +39,13 @@ jobs:
         # Maps to the InformationalVersion element
         informationalVersion: ${{ env.Version }}
         
-    - name: Install MAUI Workloads
-      run: |
-        dotnet workload install maui --ignore-failed-sources
-        
     - name: Restore dependencies
       run: dotnet restore ${{ env.Project }}
       
     - name: Build
-      run: dotnet build ${{ env.Project }} --configuration ${{ env.Configuration }} --no-restore
+      run: dotnet build ${{ env.Project }} --configuration Release --no-restore
 
-    - name: Archive production artifacts
+    - name: Archive artifacts
       uses: actions/upload-artifact@v3
       with:
         name: nuget packages
