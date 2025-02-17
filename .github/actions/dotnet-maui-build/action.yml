@@ -1,5 +1,5 @@
-name: "Dotnet Steps"
-description: "Composite Action für Update Version, Restore dependencies, Build und Archive artifacts"
+name: "Dotnet MAUI Build Steps"
+description: "Composite Action für Update Version, Restore, Build und Archive"
 inputs:
   version:
     description: "Die Version, die gesetzt werden soll."
@@ -24,9 +24,11 @@ runs:
 
     - name: Restore dependencies
       run: dotnet restore ${{ inputs.project }}
+      shell: pwsh
 
-    - name: Build
+    - name: Build project
       run: dotnet build ${{ inputs.project }} --configuration Release --no-restore
+      shell: pwsh
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v3
